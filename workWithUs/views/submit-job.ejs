@@ -1,0 +1,102 @@
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">Submit Job</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead">
+      Share your amazing works with thousand of webdevelopers across the world.
+      fill our form to get started.
+    </p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <% if(infoSubmitObj !='') { %>
+  <div class="col-8 alert alert-success" role="alert"><%= infoSubmitObj %></div>
+  <% } %> <% if(infoErrorsObj !='') { %>
+  <div class="col-8 alert alert-danger" role="alert">
+    <%= infoErrorsObj[0].message %>
+  </div>
+  <% } %>
+
+  <div class="col-8">
+    <form action="/submit-job" enctype="multipart/form-data" method="POST">
+      <div class="row g-3">
+        <div class="col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" id="email" class="form-control" />
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">Job Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="col-12">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            class="form-control"
+            cols="30"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">Ingredient</label><br />
+          <small>Example: Wood</small>
+          <div class="ingredientList">
+            <div class="ingredientDiv mb-1">
+              <input type="text" name="ingredient" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="addIngredientsBtn"
+          >
+            + Ingredient
+          </button>
+
+          <div class="col-12">
+            <label for="category">Select Category</label>
+            <select
+              class="form-select form-control"
+              name="category"
+              aria-Label="Category"
+            >
+              <option selected>Select Category</option>
+              <option value="blacksmith">blacksmith</option>
+              <option value="carpenter">carpenter</option>
+              <option value="nurse">nurse</option>
+              <option value="maid">maid</option>
+              <option value="plumber">plumber</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label for="image">Product Image </label>
+            <input
+              type="file"
+              class="form-control"
+              name="image"
+              accept="image/*"
+            />
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit Job</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
